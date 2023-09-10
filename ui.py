@@ -28,69 +28,32 @@ def main(page: ft.Page):
 
     progress_voice_assistant = ft.ProgressRing(scale=1.75, color = ft.colors.BLUE, visible = False)
 
-    global count
-    count = 0
     def speech():
-        global count
-        if count == 0:
-            progress_voice_assistant.visible = True
-            progress_voice_assistant.update()
-            
-            # voice.resultSTT = voice.speechToText()
-            voice.resultSTT = "Cнижение уровня воды в расширительном баке"
-            time.sleep(3)
+        progress_voice_assistant.visible = True
+        progress_voice_assistant.update()
+        
+        voice.resultSTT = voice.speechToText()
 
-            listTileQuestion.title = ft.Text(voice.resultSTT)
-            listTileQuestion.update()
+        listTileQuestion.title = ft.Text(voice.resultSTT)
+        listTileQuestion.update()
 
-            progress_voice_assistant.color = ft.colors.GREEN
-            progress_voice_assistant.update()
+        progress_voice_assistant.color = ft.colors.GREEN
+        progress_voice_assistant.update()
 
 
-            
-            progress_voice_assistant.color = ft.colors.PURPLE
-            progress_voice_assistant.update()
+        
+        progress_voice_assistant.color = ft.colors.PURPLE
+        progress_voice_assistant.update()
 
-            model_result = "Немедленно снимите нагрузку и после снижения температуры воды остановите дизель. Найдите место утечки, устранить по возможности. Дальнейшая эксплуатация допустима после устранения неисправности или заправки системы до необходимого уровня."
-            voice.textToSpeech(model_result)
+        model_result = "Найдите место утечки, устранить по возможности."
+        voice.textToSpeech(model_result)
 
-            listTileAnswer.title = ft.Text(model_result)
-            listTileAnswer.update()
+        listTileAnswer.title = ft.Text(model_result)
+        listTileAnswer.update()
 
-            progress_voice_assistant.color = ft.colors.BLUE
-            progress_voice_assistant.visible = False
-            progress_voice_assistant.update()
-
-        else:
-            progress_voice_assistant.visible = True
-            progress_voice_assistant.update()
-            
-            # voice.resultSTT = voice.speechToText()
-            voice.resultSTT = "Реле РУ6 срабатывает, но не включается реле времени РВ1"
-            time.sleep(3)
-
-            listTileQuestion.title = ft.Text(voice.resultSTT)
-            listTileQuestion.update()
-
-            progress_voice_assistant.color = ft.colors.GREEN
-            progress_voice_assistant.update()
-
-
-            
-            progress_voice_assistant.color = ft.colors.PURPLE
-            progress_voice_assistant.update()
-
-            model_result = "Заменить плавкую вставку предохранителя"
-            voice.textToSpeech(model_result)
-
-            listTileAnswer.title = ft.Text(model_result)
-            listTileAnswer.update()
-
-            progress_voice_assistant.color = ft.colors.BLUE
-            progress_voice_assistant.visible = False
-            progress_voice_assistant.update()
-
-        count = count + 1
+        progress_voice_assistant.color = ft.colors.BLUE
+        progress_voice_assistant.visible = False
+        progress_voice_assistant.update()
 
     def pick_files_result(e: ft.FilePickerResultEvent):
         try:
